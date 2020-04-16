@@ -1,4 +1,8 @@
+FROM alpine
+
 ENV JULIA_VERSION=1.4.0
+
+ENV PATH /usr/local/bin:$PATH
 
 RUN mkdir /opt/julia-${JULIA_VERSION} && \
     cd /tmp && \
@@ -7,4 +11,4 @@ RUN mkdir /opt/julia-${JULIA_VERSION} && \
     rm /tmp/julia-${JULIA_VERSION}-linux-x86_64.tar.gz
 RUN ln -fs /opt/julia-*/bin/julia /usr/local/bin/julia
 
-RUN julia run.jl
+RUN julia app.jl
